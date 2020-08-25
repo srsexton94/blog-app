@@ -8,10 +8,15 @@ import { ArticlesService } from '../articles.service';
 })
 export class ListComponent implements OnInit {
 
+  brews: Object;
+
   constructor(private _articles: ArticlesService) { }
 
   ngOnInit(): void {
-    this._articles.myMethod();
+    this._articles.getBeer().subscribe(data => {
+      this.brews = data;
+      console.log(this.brews)
+    })
   }
 
 }
